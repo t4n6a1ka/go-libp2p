@@ -49,7 +49,7 @@ type mdnsService struct {
 
 func getDialableListenAddrs(ph host.Host) ([]*net.TCPAddr, error) {
 	var out []*net.TCPAddr
-	for _, addr := range ph.Addrs() {
+	for _, addr := range ph.Network().InterfaceListenAddresses() {
 		na, err := manet.ToNetAddr(addr)
 		if err != nil {
 			continue
